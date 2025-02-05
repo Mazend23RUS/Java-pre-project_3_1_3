@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/html">
+<html lang="en">
+
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8"/>
+    <title>save_confirmation</title>
+    <link rel="stylesheet" type="text/css" />
+</head>
+
+
+<body>
+<div class="container text-center">
+    <p th:text="'Юзер который зашел в модель ' + ${user.getUserName()} + ' ' + ${user.getUserSurname()} + ' ' + ${user.getAge()}" ></p>
+  <h3>User был добавлен в базу данных. Успешно!!!</h3>
+  <h4><a th:href="@{/}">Нажми, что бы вернуться к списку пользователей</a></h4>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/html">
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Edit_User</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<style>
+    .container {
+        position: relative;
+        width: 100%;
+        height: 100vh; /* Высота контейнера на всю высоту viewport */
+    }
+
+    .top-right-button {
+        position: absolute;
+        top: 10px; /* Отступ сверху */
+        right: 10px; /* Отступ справа */
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .top-right-button:hover {
+        background-color: #0056b3;
+    }
+
+</style>
+
+<body>
+
+<h1 align="center">Редактирование пользователя</h1>
+<h1></h1>
+
+
+<div align="center">
+
+    <p>Редактирование пользователя</p>
+    <table border="2" >
+
+        <form action="#" th:action="@{/updateuser}" method="post" th:object="${userForUpdate}" >
+            <input type="hidden" th:field="*{id}">
+            <tr >
+                <th th:align="left"> Имя : <input type="text" th:field="*{userName}" size="10" /></th>
+            </tr>
+            <tr>
+                <th th:align="left">Фамилия : <input type="text" th:field="*{userSurname}" size="10"/></th>
+            </tr>
+            <tr>
+                <th th:align="left">Возраст : <input th:field="*{age}" size="2" /></th>
+            </tr>
+
+            <th>
+                <input type="submit" value="Обновить Пользователя"/>
+            </th>
+
+        </form>
+    </table>
+</div>
+
+
+<div class="container">
+    <form th:action="@{/logout}" method="post">
+        <button class="top-right-button" type="submit">Выход </button>
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,109 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/html">
+<html lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8"/>
+  <title>Список Пользователей</title>
+  <!--    <link rel="stylesheet" type="text/css" />-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<style>
+
+  h1 {
+    font-size: 120%;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    color: blueviolet;
+  }
+
+  h2 {
+    font-size: 100%;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    color: blue;
+  }
+
+  .container {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Высота контейнера на всю высоту viewport */
+  }
+
+  .top-right-button {
+    position: absolute;
+    top: 10px; /* Отступ сверху */
+    right: 10px; /* Отступ справа */
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  .top-right-button:hover {
+    background-color: #0056b3;
+  }
+
+</style>
+
+
+
+<body>
+
+<h1 align="center">Список Всех Пользователей</h1>
+<h2 align="center">Пользователи</h2>
+<div align="center">
+  <form th:method="post" th:action="@{/deleteuser/{id}}" >
+    <table border="1">
+      <thead>
+      <tr>
+        <th>id</th>
+        <th>Имя пол-еля</th>
+
+        <th>Фамилия пол-я</th>
+        <th>Возраст пол-я</th>
+        <th>Пароль пол-я</th>
+        <th>Удалить пол-я</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr th:if="${allUsers.isEmpty()}">
+        <td colspan="3">В базе данных пусто</td>
+      </tr>
+      <tr th:each="user : ${allUsers}">
+        <td><span th:text="${user.getId()}"> id  </span> </td>
+        <td><span th:text="${user.getUserName()}"> User  </span> </td>
+        <td><span th:text="${user.getUserSurname()}"> Surname </span></td>
+        <td><span th:text="${user.getAge()}"> Age </span></td>
+        <td><span th:text="${user.getPassword()}"> Password </span> </td>
+        <td><a th:href="@{/updateuser(id=${user.getId()})}" class="btn btn-primary" > Редакти-ть </a> </td>
+        <td><a th:href="@{/deleteuser(id=${user.getId()})}" class="btn btn-danger" > Удалить </a> </td>
+      </tr>
+      </tbody>
+
+
+    </table>
+
+  </form>
+</div>
+
+
+<p></p>
+<p></p>
+
+
+<div class="link" style="text-align: center">
+  <a style="color: darkgoldenrod; font-size: 140%"
+     href="http://localhost:8080/adduser">Добавить нового пользователя</a>
+</div>
+
+<div class="container">
+  <form th:action="@{/logout}" method="post">
+    <button class="top-right-button" type="submit">Выход </button>
+  </form>
+
+</div>
+
+</body>
+</html>
